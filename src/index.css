@@ -13,63 +13,39 @@ body {
 
 .title{
 	text-align: center;
+	margin-right: 1rem;
 }
 
 .contents--container {
 	display: flex;
-	margin-left: calc(50vw - 35rem);
+	justify-content: space-evenly;
 	margin-top: 20vh;
-}
-
-.back-sign, .forward-sign {
-	margin-top: 5rem;
-	font-size: 8rem;
-	cursor: pointer;
-	color: rgba(255, 255, 255, 0.5);
-}
-
-.back-sign:hover, .forward-sign:hover {
-	color: rgba(255, 255, 255, 0.7)
-}
-
-.forward-sign {
-	margin-left: 5rem;
 }
 
 .content--container {
 	background-color: #0d0b1e;
 	display: flex;
-	height: 20rem;
-	width: 50rem;
-	margin-left: 5rem;
+	height: 15.5rem;
+	width: 38rem; 
 	border-radius: 1rem;
+	cursor: pointer;
 }
 
+.container-left--none {display: none;}
+.container-left {transform: matrix3d(1, 0, 0, -0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) scale(0.85);}
+.container-middle {}
+.container-right {transform: matrix3d(1, 0, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) scale(0.85);}
+.container-right--none {display: none;}
+
+
 .weather-img{
-	height: 16rem;
-	margin-top: 2rem;
-	margin-left: 2rem;
+	height: 11.5rem;
+	margin-top: 1.9rem;
+	margin-left: 1.5rem;
 }
 
 .text-content{
-	margin-top: 3rem;
-	margin-left: 2rem;
-}
-
-
-.content--container {
-  animation-name: cssAnimation;
-  animation-duration: 3s;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-  animation-fill-mode: forwards;
-}
-
-@keyframes cssAnimation {
-  from {
-    transform: perspective(0);
-  }
-  to {
-    transform: scale3d(1, 1, 1);
-  }
+	margin-top: 1.8rem;
+	margin-left: 3rem;
+	font-size: 90%;
 }

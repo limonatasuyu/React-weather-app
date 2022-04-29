@@ -1,0 +1,68 @@
+.left-to-middle  {animation-name: leftToMiddle;  animation-duration: 1s;}
+.right-to-middle {animation-name: rightToMiddle; animation-duration: 1s;}
+.middle-to-left  {animation-name: middleToLeft;  animation-duration: 1s;}
+.middle-to-right {animation-name: middleToRight; animation-duration: 1s;}
+.left-to-none    {animation-name: leftToNone;    animation-duration: 1s;}
+.right-to-none   {animation-name: rightToNone;   animation-duration: 1s;}
+.none-to-left    {animation-name: noneToLeft;    animation-duration: 1s;}
+.none-to-right   {animation-name: noneToRight;   animation-duration: 1s;}
+
+@keyframes leftToMiddle {
+	from{
+		transform: matrix3d(1, 0, 0, -0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) scale(0.85);
+	}
+	to {
+		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) scale(1);
+	}
+}
+
+@keyframes rightToMiddle {
+	from{
+		transform: matrix3d(1, 0, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) scale(0.85);
+	}
+	to {
+		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) scale(1);
+	}
+}
+
+@keyframes middleToLeft {
+	from{
+		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) scale(1);
+	}
+	to{
+		transform: matrix3d(1, 0, 0, -0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) scale(0.85);
+	}
+}
+
+@keyframes middleToRight {
+	from{
+		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) scale(1);
+	}
+	to{
+		transform: matrix3d(1, 0, 0, 0.0005, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) scale(0.85);
+	}
+}
+
+@keyframes leftToNone {
+	from{}
+	to{
+		opacity: 0;
+	}
+}
+
+@keyframes rightToNone {
+	from{}
+	to{
+		opacity: 0;
+	}
+}
+
+@keyframes noneToLeft {
+	from{}
+	to{}
+}
+
+@keyframes noneToRight{
+	from{}
+	to{}
+}
