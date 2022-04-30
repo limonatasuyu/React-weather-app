@@ -29,7 +29,8 @@ export default function App() {
 	//}, [])
 	//var condition = data.current.condition.text
 	
-	const [containerClasses, setClasses] = useState({
+	const [containerAnims, setAnims] = useState({
+		animation: " ",
 		leftNone: "container-left--none",
 		left: "container-left",
 		middle: "container-middle",
@@ -37,39 +38,46 @@ export default function App() {
 		rightNone: "container-right--none",
 	})
 	
-	function handleLeftClick() {
+	const rightClickAnims = {
+			animation: "right-to-left ",
+			leftNone:  "container-left--none",
+			left:  "container-left left-to-none",
+			middle: "container-middle middle-to-left",
+			right: "container-right right-to-middle",
+			rightNone: "container-right--none none-to-right",
+		}
+	const leftClickAnims = {
+			animation: "left-to-right ",
+			leftNone:  "container-left--none none-to-left",
+			left:  "container-left left-to-middle",
+			middle: "container-middle middle-to-right",
+			right: "container-right right-to-none",
+			rightNone: "container-right--none",
+		}
+	
+	
+	function handleAnimation(event) {
 
-		let Animation = new Promise((resolve, reject) => {
-			let newLeft = "container-left left-to-middle"
-			let newMiddle = "container-middle middle-to-right"
-			let newRight = "container-right right-to-none"
-			let newClasses = {left: newLeft, middle: newMiddle, right: newRight}
-			setClasses(newClasses)
-			setTimeout(() => {resolve('resolved')}, 1000) 
-		})
+		let oldClasses = {...containerAnims}
+		let newClasses;
 		
-		Animation.then(() => {
-			let newLeft = "container-left"
-			let newMiddle = "container-middle"
-			let newRight = "container-right"
-			let newClasses = {left: newLeft, middle: newMiddle, right: newRight}
-			setClasses(newClasses)
-		})
-	}
-	
-	function handleRightClick() {
-	
+		if (event.pageX > 120 && event.pageX < 650)        {newClasses = leftClickAnims}
+		else if (event.pageX > 1270 && event.pageX < 1790) {newClasses = rightClickAnims}
+		else {return}
+
+		setAnims(newClasses)
+		setTimeout(() => {setAnims(oldClasses)}, 2000)
 	}
 
 	return(
 		<div className="App">
 			<h1 className="title">Current Weather</h1>
-			<div className="contents--container">
-				<ContentContainer className={containerClasses.leftNone}/>
-				<ContentContainer onClick={handleLeftClick}  className={containerClasses.left}/>
-				<ContentContainer className={containerClasses.middle} />
-				<ContentContainer onClick={handleRightClick} className={containerClasses.right}/>
-				<ContentContainer className={containerClasses.rightNone}/>
+			<div className={containerAnims.animation + " contents--container"}>
+				<ContentContainer className={containerAnims.leftNone}/>
+				<ContentContainer onClick={handleAnimation}  className={containerAnims.left}/>
+				<ContentContainer className={containerAnims.middle} />
+				<ContentContainer onClick={handleAnimation} className={containerAnims.right}/>
+				<ContentContainer className={containerAnims.rightNone}/>
 			</div>
 		</div>
 	)
