@@ -1,13 +1,13 @@
 @import 'index.css';
 
+/* Left To Right Animation ====================================================================================================== */
+
 .left-to-middle  {animation-name: leftToMiddle;  animation-duration: 2s;}
 .middle-to-right {animation-name: middleToRight; animation-duration: 2s;}
 .right-to-none   {animation-name: rightToNone;   animation-duration: 2s;}
 .none-to-left    {animation-name: noneToLeft;    animation-duration: 2s;}
 .left-to-right   {animation-name: leftToRight;   animation-duration: 2s;}
 
-
-/* First Animation */
 
 @keyframes leftToRight {
 	from {}
@@ -34,7 +34,7 @@
 	to   {transform: matrix3d(var(--left-position));      opacity: 1;}
 }
 
-/* Second Animation =========================================================================================================== */
+/* Right To Left Animation ====================================================================================================== */
 
 .right-to-left   {animation-name: rightToLeft;   animation-duration: 2s;}
 .right-to-middle {animation-name: rightToMiddle; animation-duration: 2s;}

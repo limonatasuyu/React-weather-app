@@ -16,6 +16,7 @@ body {
 	overflow: hidden;
 }
 
+/* Added some margin to whole App in order to centering it in page */
 .App {
 	display: grid;
   font-family: sans-serif;
@@ -49,6 +50,7 @@ body {
 
 .weather-img{
 	height: 11.5rem;
+	width: 20rem;
 	margin-top: 1.9rem;
 	margin-left: 1.5rem;
 }
