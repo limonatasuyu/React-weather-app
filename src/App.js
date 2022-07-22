@@ -6,7 +6,9 @@ import lightRainImg from './img/lightRain.jpeg'
 import rainyImg from './img/rainy.jpeg'
 import overcastImg from './img/overcast.jpg'
 import './animations.css'
-import fetchDataFunction from './fetchData'
+import axios from 'axios'
+
+const API_KEY = "cda7151f40e144b3a91153640222804"
 
 
 function ContentContainer(props) {
@@ -79,22 +81,36 @@ export default function App() {
 		setTimeout(() => {setAnims(oldClasses); setData(newData)}, 2000)
 	}
 	
-	const [data, setData] = useState({})
+	const [data, setData] = useState([])
 
+	const cities = ["Istanbul", "New York", "London", "Berlin", "Tokyo"]
+	const [cityIndex, setCityIndex] = useState(0)
+	
 	useEffect(() => {
-		fetchDataFunction()
-			.then(data => setData(data))
-	}, [])
+	if (cityIndex >= cities.length) {return}
+	axios.get(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${cities[cityIndex]}&aqi=no`)
+		.then((res) => {
+		let fetchedData = {name: cities[cityIndex], currentWeather: res.data.current.condition.text, date: res.data.current.last_updated.slice(0, 10), temp_c: res.data.current.temp_c,}
+		setData([...data, fetchedData])
+		})
+			.catch((err) => {console.log(err)})
+				.then(() => {console.log(`request for ${cities[cityIndex]} made`)})	
+	setCityIndex(cityIndex + 1)
+	}, [data])
 
 	return(
 		<div className="App">
 			<h1 className="title">Current Weather</h1>
 			<div className={containerAnims.animation + " contents--container"}>
+				{data.length === cities.length &&
+				<>
 				<ContentContainer data={data[0]}  className={containerAnims.leftNone}/>
 				<ContentContainer data={data[1]} onClick={handleClick}  className={containerAnims.left}/>
 				<ContentContainer data={data[2]} className={containerAnims.middle} />
 				<ContentContainer data={data[3]} onClick={handleClick} className={containerAnims.right}/>
 				<ContentContainer data={data[4]} className={containerAnims.rightNone}/>
+				</>
+				}
 			</div>
 		</div>
 	)
