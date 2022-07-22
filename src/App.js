@@ -88,7 +88,7 @@ export default function App() {
 	
 	useEffect(() => {
 	if (cityIndex >= cities.length) {return}
-	axios.get(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${cities[cityIndex]}&aqi=no`)
+	axios.get(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${cities[cityIndex]}&aqi=no`)
 		.then((res) => {
 		let fetchedData = {name: cities[cityIndex], currentWeather: res.data.current.condition.text, date: res.data.current.last_updated.slice(0, 10), temp_c: res.data.current.temp_c,}
 		setData([...data, fetchedData])
