@@ -4,6 +4,7 @@ import sunnyImg from './img/sunny.jpeg'
 import cloudyImg from './img/cloudy.jpeg'
 import lightRainImg from './img/lightRain.jpeg'
 import rainyImg from './img/rainy.jpeg'
+import overcastImg from './img/overcast.jpg'
 import './animations.css'
 import fetchDataFunction from './fetchData'
 
@@ -18,6 +19,7 @@ function ContentContainer(props) {
 		if (props.data.currentWeather === "Light rain") {weatherImg = lightRainImg}
 		if (props.data.currentWeather === "Rainy") {weatherImg = rainyImg}
 		if (props.data.currentWeather === "Partly cloudy" || props.data.currentWeather === "cloudy") {weatherImg = cloudyImg}
+		if (props.data.currentWeather === "Overcast") {weatherImg = overcastImg}
 	}
 	return(
 		<div className={props.className + " content--container"} onClick={props.onClick}>
